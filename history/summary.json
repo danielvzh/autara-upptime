@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Autara API",
+    "url": "https://api.autara.finance/v1/health",
+    "icon": "https://autara.finance/favicon.ico",
+    "slug": "autara-api",
+    "status": "up",
+    "uptime": "0.03%",
+    "uptimeDay": "0.03%",
+    "uptimeWeek": "0.03%",
+    "uptimeMonth": "0.03%",
+    "uptimeYear": "0.03%",
+    "time": 576,
+    "timeDay": 576,
+    "timeWeek": 576,
+    "timeMonth": 576,
+    "timeYear": 576,
+    "dailyMinutesDown": {
+      "2026-03-01": 214
+    }
+  },
+  {
+    "name": "Autara Dev App",
+    "url": "https://dev.autara.finance/markets",
+    "icon": "https://autara.finance/favicon.ico",
+    "slug": "autara-dev-app",
+    "status": "up",
+    "uptime": "100.00%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "100.00%",
+    "uptimeMonth": "100.00%",
+    "uptimeYear": "100.00%",
+    "time": 303,
+    "timeDay": 303,
+    "timeWeek": 303,
+    "timeMonth": 303,
+    "timeYear": 303,
+    "dailyMinutesDown": {}
+  }
+]

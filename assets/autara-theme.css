@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  --body-background-color: #f0ece8;
+  --body-text-color: #131313;
+  --card-background-color: #ffffff;
+  --nav-background-color: #f0ece8;
+  --nav-border-bottom-color: #d9d3cc;
+  --nav-current-border-bottom-color: #131313;
+  --card-border-color: #d9d3cc;
+  --down-border-left-color: #dc3545;
+  --down-background-color: #fde8ea;
+  --degraded-border-left-color: #e8a317;
+  --up-border-left-color: #28a745;
+  --tag-color: #ffffff;
+  --tag-up-background-color: #28a745;
+  --tag-down-background-color: #dc3545;
+  --tag-degraded-background-color: #e8a317;
+  --change-background-color: #e8a317;
+  --error-button-border-color: #131313;
+  --error-button-background-color: #131313;
+  --error-button-color: #f0ece8;
+  --submit-button-border-color: #131313;
+  --submit-button-background-color: #131313;
+  --submit-button-color: #f0ece8;
+  --graph-opacity: 1;
+  --graph-filter: none;
+}
+
+* {
+  font-family: 'Manrope', sans-serif !important;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+nav {
+  border-bottom: 1px solid #d9d3cc !important;
+}
+
+nav a {
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+}
+
+.card {
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+h1, h2, h3 {
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+}
+
+.tag {
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+a {
+  color: #131313 !important;
+  text-decoration-color: #d9d3cc !important;
+}
+
+a:hover {
+  text-decoration-color: #131313 !important;
+}

@@ -1,0 +1,38 @@
+owner: danielvzh
+repo: autara-upptime
+
+sites:
+  - name: Autara API
+    url: https://api.autara.finance/v1/health
+    icon: https://autara.finance/favicon.ico
+    __dangerous__body_down: '"stale":true'
+
+  - name: Autara Dev App
+    url: https://dev.autara.finance/markets
+    icon: https://autara.finance/favicon.ico
+
+  - name: Arch Testnet RPC (https://rpc.testnet.arch.network)
+    url: https://rpc.testnet.arch.network
+    method: POST
+    headers:
+      - "Content-Type: application/json"
+    body: '{"jsonrpc":"2.0","id":"id","method":"get_block_count","params":[]}'
+    __dangerous__insecure: true
+
+status-website:
+  cname: status.autara.finance
+  logoUrl: https://dev.autara.finance/images/logo/logo-maple.svg
+  name: Autara Services Status
+  introTitle: "**Status**"
+  introMessage: Uptime and response time for our public services.
+  themeUrl: https://status.autara.finance/autara-theme.css
+  navbar:
+    - title: Status
+      href: /
+    - title: GitHub
+      href: https://github.com/$OWNER/$REPO
+    - title: Docs
+      href: https://docs.autara.finance
+
+assignees:
+  - danielvzh
