@@ -18,7 +18,7 @@ jobs:
       - name: Check block count
         run: |
           STATE_FILE="history/arch-block-count-state.json"
-          STATUS_FILE="api/arch-block-progression/status.json"
+          STATUS_FILE="api/arch-testnet/status.json"
           mkdir -p "$(dirname "$STATUS_FILE")"
 
           RESPONSE=$(curl -sk -X POST https://rpc.testnet.arch.network \

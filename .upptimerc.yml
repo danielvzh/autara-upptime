@@ -12,7 +12,7 @@ sites:
     icon: https://autara.finance/favicon.ico
 
   - name: Arch Testnet
-    url: https://raw.githubusercontent.com/danielvzh/autara-upptime/main/api/arch-block-progression/status.json
+    url: https://raw.githubusercontent.com/danielvzh/autara-upptime/main/api/arch-testnet/status.json
     __dangerous__body_down_if_text_missing: '"progressing":true'
 
 status-website:
