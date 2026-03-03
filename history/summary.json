@@ -43,18 +43,16 @@
     "icon": "https://icons.duckduckgo.com/ip3/raw.githubusercontent.com.ico",
     "slug": "arch-testnet",
     "status": "up",
-    "uptime": "4.62%",
-    "uptimeDay": "4.62%",
-    "uptimeWeek": "4.62%",
-    "uptimeMonth": "4.62%",
-    "uptimeYear": "4.62%",
+    "uptime": "100.00%",
+    "uptimeDay": "100.00%",
+    "uptimeWeek": "100.00%",
+    "uptimeMonth": "100.00%",
+    "uptimeYear": "100.00%",
     "time": 189,
     "timeDay": 189,
     "timeWeek": 189,
     "timeMonth": 189,
     "timeYear": 189,
-    "dailyMinutesDown": {
-      "2026-03-03": 2
-    }
+    "dailyMinutesDown": {}
   }
 ]
