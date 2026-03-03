@@ -11,7 +11,7 @@ sites:
     url: https://dev.autara.finance/markets
     icon: https://autara.finance/favicon.ico
 
-  - name: Arch Testnet RPC (https://rpc.testnet.arch.network)
+  - name: Arch Testnet RPC
     url: https://rpc.testnet.arch.network
     method: POST
     headers:
@@ -19,6 +19,10 @@ sites:
     body: '{"jsonrpc":"2.0","id":"id","method":"get_block_count","params":[]}'
     __dangerous__insecure: true
     __dangerous__body_down_if_text_missing: '"result"'
+
+  - name: Arch Block Progression
+    url: https://raw.githubusercontent.com/danielvzh/autara-upptime/main/api/arch-block-progression/status.json
+    __dangerous__body_down_if_text_missing: '"progressing":true'
 
 status-website:
   cname: status.autara.finance

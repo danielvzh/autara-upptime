@@ -16,12 +16,10 @@ jobs:
           token: ${{ secrets.GH_PAT || github.token }}
 
       - name: Check block count
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT || github.token }}
-          REPO: ${{ github.repository }}
         run: |
           STATE_FILE="history/arch-block-count-state.json"
-          ISSUE_LABEL="arch-rpc-stalled"
+          STATUS_FILE="api/arch-block-progression/status.json"
+          mkdir -p "$(dirname "$STATUS_FILE")"
 
           RESPONSE=$(curl -sk -X POST https://rpc.testnet.arch.network \
             -H "Content-Type: application/json" \
@@ -29,7 +27,14 @@ jobs:
             --max-time 30 2>/dev/null || echo "FAILED")
 
           if [ "$RESPONSE" = "FAILED" ]; then
-            echo "RPC request failed, skipping this run"
+            echo "RPC request failed"
+            echo '{"progressing":false,"block_count":0,"error":"rpc_unreachable","updated_at":"'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"}' > "$STATUS_FILE"
+            git config user.name "upptime-bot"
+            git config user.email "upptime-bot@autara.finance"
+            git add "$STATUS_FILE"
+            git diff --cached --quiet || git commit -m "Arch RPC unreachable [skip ci]"
+            git pull --rebase || true
+            git push || true
             exit 0
           fi
 
@@ -37,6 +42,13 @@ jobs:
 
           if [ -z "$CURRENT_COUNT" ]; then
             echo "No result in response: $RESPONSE"
+            echo '{"progressing":false,"block_count":0,"error":"invalid_response","updated_at":"'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"}' > "$STATUS_FILE"
+            git config user.name "upptime-bot"
+            git config user.email "upptime-bot@autara.finance"
+            git add "$STATUS_FILE"
+            git diff --cached --quiet || git commit -m "Arch RPC invalid response [skip ci]"
+            git pull --rebase || true
+            git push || true
             exit 0
           fi
 
@@ -49,35 +61,21 @@ jobs:
           fi
 
           echo "Previous block count: $PREV_COUNT"
+          NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 
           if [ "$CURRENT_COUNT" -gt "$PREV_COUNT" ]; then
             echo "Block count is progressing"
-
-            echo "{\"block_count\": $CURRENT_COUNT, \"updated_at\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" > "$STATE_FILE"
-
-            git config user.name "upptime-bot"
-            git config user.email "upptime-bot@autara.finance"
-            git add "$STATE_FILE"
-            git diff --cached --quiet || git commit -m "Update Arch block count: $CURRENT_COUNT [skip ci]"
-            git push || true
-
-            OPEN_ISSUE=$(gh issue list --repo "$REPO" --label "$ISSUE_LABEL" --state open --json number -q '.[0].number' 2>/dev/null)
-            if [ -n "$OPEN_ISSUE" ]; then
-              gh issue close "$OPEN_ISSUE" --repo "$REPO" \
-                --comment "Resolved — block count is progressing again (now at $CURRENT_COUNT)."
-              echo "Closed issue #$OPEN_ISSUE"
-            fi
+            echo "{\"block_count\": $CURRENT_COUNT, \"updated_at\": \"$NOW\"}" > "$STATE_FILE"
+            echo "{\"progressing\":true,\"block_count\":$CURRENT_COUNT,\"updated_at\":\"$NOW\"}" > "$STATUS_FILE"
           else
             echo "Block count has NOT increased ($PREV_COUNT -> $CURRENT_COUNT)"
-
-            OPEN_ISSUE=$(gh issue list --repo "$REPO" --label "$ISSUE_LABEL" --state open --json number -q '.[0].number' 2>/dev/null)
-            if [ -z "$OPEN_ISSUE" ]; then
-              gh issue create --repo "$REPO" \
-                --title "Arch RPC Testnet: block count stalled at $CURRENT_COUNT" \
-                --body "The Arch RPC Testnet block count has not increased. Stuck at **$CURRENT_COUNT** since $(jq -r '.updated_at' "$STATE_FILE" 2>/dev/null || echo 'unknown')." \
-                --label "$ISSUE_LABEL"
-              echo "Opened new stall issue"
-            else
-              echo "Stall issue #$OPEN_ISSUE already open"
-            fi
+            LAST_UPDATE=$(jq -r '.updated_at // empty' "$STATE_FILE" 2>/dev/null || echo "$NOW")
+            echo "{\"progressing\":false,\"block_count\":$CURRENT_COUNT,\"stalled_since\":\"$LAST_UPDATE\",\"updated_at\":\"$NOW\"}" > "$STATUS_FILE"
           fi
+
+          git config user.name "upptime-bot"
+          git config user.email "upptime-bot@autara.finance"
+          git add "$STATE_FILE" "$STATUS_FILE"
+          git diff --cached --quiet || git commit -m "Update Arch block count: $CURRENT_COUNT [skip ci]"
+          git pull --rebase || true
+          git push || true
