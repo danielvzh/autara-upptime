@@ -18,6 +18,7 @@ sites:
       - "Content-Type: application/json"
     body: '{"jsonrpc":"2.0","id":"id","method":"get_block_count","params":[]}'
     __dangerous__insecure: true
+    __dangerous__body_down_if_text_missing: '"result"'
 
 status-website:
   cname: status.autara.finance
