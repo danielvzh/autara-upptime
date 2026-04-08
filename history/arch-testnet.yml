@@ -1,7 +1,7 @@
 url: https://raw.githubusercontent.com/danielvzh/autara-upptime/main/api/arch-testnet/status.json
-status: down
+status: up
 code: 200
-responseTime: 133
-lastUpdated: 2026-04-08T02:29:51.414Z
+responseTime: 155
+lastUpdated: 2026-04-08T19:08:45.584Z
 startTime: 2026-03-03T16:39:20.071Z
 generator: Upptime <https://github.com/upptime/upptime>
