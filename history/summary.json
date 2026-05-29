@@ -5,11 +5,11 @@
     "icon": "https://autara.finance/favicon.ico",
     "slug": "autara-api",
     "status": "up",
-    "uptime": "96.27%",
+    "uptime": "96.28%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "94.59%",
-    "uptimeYear": "96.27%",
+    "uptimeYear": "96.28%",
     "time": 464,
     "timeDay": 710,
     "timeWeek": 443,
@@ -60,16 +60,16 @@
     "url": "https://raw.githubusercontent.com/danielvzh/autara-upptime/main/api/arch-testnet/status.json",
     "icon": "https://icons.duckduckgo.com/ip3/raw.githubusercontent.com.ico",
     "slug": "arch-testnet",
-    "status": "down",
-    "uptime": "89.21%",
-    "uptimeDay": "99.99%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "97.00%",
-    "uptimeYear": "89.21%",
+    "status": "up",
+    "uptime": "89.05%",
+    "uptimeDay": "84.88%",
+    "uptimeWeek": "97.84%",
+    "uptimeMonth": "96.64%",
+    "uptimeYear": "89.05%",
     "time": 161,
-    "timeDay": 113,
-    "timeWeek": 141,
-    "timeMonth": 124,
+    "timeDay": 108,
+    "timeWeek": 136,
+    "timeMonth": 123,
     "timeYear": 161,
     "dailyMinutesDown": {
       "2026-03-18": 692,
@@ -103,7 +103,7 @@
       "2026-05-11": 112,
       "2026-05-12": 137,
       "2026-05-21": 219,
-      "2026-05-29": 0
+      "2026-05-29": 218
     }
   }
 ]
